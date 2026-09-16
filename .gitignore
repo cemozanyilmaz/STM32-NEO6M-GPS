@@ -1,0 +1,25 @@
+# Build
+build/
+Debug/
+Release/
+
+# STM32CubeIDE
+.metadata/
+.settings/
+.project
+.cproject
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Compiled files
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.d
+
