@@ -2,22 +2,24 @@
 /**
  ******************************************************************************
  * @file           : main.c
- * @brief          : MPU6050 IMU measurement application using STM32 HAL
+ * @brief          : NEO-6M GPS application using STM32 HAL
  * @author         : Cem Ozan Yilmaz
- * @date           : 12.09.2026 (dd/mm/yyyy)
+ * @date           : 16.09.2026 (dd/mm/yyyy)
  ******************************************************************************
  * @details
  *
- * This application interfaces the MPU6050 IMU with a NUCLEO-L476RG
- * over I2C using a custom STM32 HAL-based MPU6050 driver.
+ * This application interfaces the NEO-6M GPS module with a NUCLEO-L476RG
+ * over UART using a custom STM32 HAL-based NEO-6M GPS library and NMEA parser.
  *
  * The application:
- * - Verifies the sensor identity using the WHO_AM_I register
- * - Wakes the MPU6050 and configures its operating parameters
- * - Configures the accelerometer and gyroscope measurement ranges
- * - Configures the digital low-pass filter and sample rate
- * - Reads acceleration, angular velocity, and internal temperature
- * - Sends the measurement results over UART
+ * - Receives NMEA data from the NEO-6M using interrupt-driven UART
+ * - Buffers complete NMEA sentences using a sentence queue
+ * - Parses RMC sentences for position, time, date, speed, and course
+ * - Parses GGA sentences for fix quality, satellites used, HDOP, and altitude
+ * - Parses GSA sentences for fix type, satellite PRNs, PDOP, HDOP, and VDOP
+ * - Parses multi-message GSV sentences for satellites in view
+ * - Extracts satellite PRN, elevation, azimuth, and SNR information
+ * - Sends the parsed GPS and satellite information over UART for monitoring
  *
  ******************************************************************************
  */
