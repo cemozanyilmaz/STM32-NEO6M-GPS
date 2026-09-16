@@ -1,3 +1,29 @@
+/**
+ ******************************************************************************
+ * @file           : neo6m.c
+ * @brief          : NEO-6M GPS library and NMEA parser implementation
+ * @author         : Cem Ozan Yilmaz
+ * @date           : 16.09.2026 (dd/mm/yyyy)
+ ******************************************************************************
+ * @details
+ *
+ * This file implements the NEO-6M GPS library for STM32 HAL.
+ *
+ * The library:
+ * - Receives GPS data using interrupt-driven UART communication
+ * - Collects incoming bytes into complete NMEA sentences
+ * - Stores complete NMEA sentences in a queue for deferred processing
+ * - Parses RMC sentences for position, time, date, speed, and course
+ * - Parses GGA sentences for fix quality, satellites used, HDOP, and altitude
+ * - Parses GSA sentences for fix type, satellite PRNs, PDOP, HDOP, and VDOP
+ * - Parses multi-message GSV sentences for satellites in view
+ * - Extracts satellite PRN, elevation, azimuth, and SNR information
+ *
+ * NMEA parsing is performed outside the UART interrupt to keep interrupt
+ * processing short and avoid performing complex operations inside the ISR.
+ *
+ ******************************************************************************
+ */
 #include <string.h>
 #include <stdlib.h>
 #include "neo6m.h"
