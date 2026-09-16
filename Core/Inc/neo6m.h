@@ -1,3 +1,27 @@
+/**
+ ******************************************************************************
+ * @file           : neo6m.h
+ * @brief          : NEO-6M GPS library and NMEA parser interface
+ * @author         : Cem Ozan Yilmaz
+ * @date           : 16.09.2026 (dd/mm/yyyy)
+ ******************************************************************************
+ * @details
+ *
+ * This header defines the public interface and data structures for the
+ * STM32 HAL-based NEO-6M GPS library.
+ *
+ * It provides:
+ * - NEO-6M library initialization
+ * - UART receive callback handling
+ * - NMEA sentence processing
+ * - Access to parsed GPS data
+ * - RMC position, time, date, speed, and course data
+ * - GGA fix quality, satellite count, HDOP, and altitude data
+ * - GSA fix type, satellite PRNs, PDOP, HDOP, and VDOP data
+ * - GSV satellite PRN, elevation, azimuth, and SNR data
+ *
+ ******************************************************************************
+ */
 #ifndef NEO6M_H
 #define NEO6M_H
 
